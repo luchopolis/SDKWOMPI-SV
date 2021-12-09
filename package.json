@@ -1,6 +1,6 @@
 {
   "name": "sdkwompi-sv",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "unofficial wompi sdk, for make more easier create transactions, payLinks through wompi API from El Salvador",
   "main": "index.js",
   "scripts": {
