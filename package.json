@@ -1,0 +1,25 @@
+{
+  "name": "sdkwompi-sv",
+  "version": "1.0.1",
+  "description": "unofficial wompi sdk, for make more easier create transactions, payLinks through wompi API from El Salvador",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luchopolis/SDKWOMPI-SV.git"
+  },
+  "keywords": [
+    "wompi-sv"
+  ],
+  "author": "lacg.dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luchopolis/SDKWOMPI-SV/issues"
+  },
+  "homepage": "https://github.com/luchopolis/SDKWOMPI-SV#readme",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
