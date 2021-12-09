@@ -1,6 +1,6 @@
 {
   "name": "wompi-sv-test",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "unofficial wompi sdk, for make more easier create transactions, payLinks through wompi API from El Salvador",
   "main": "index.js",
   "scripts": {
