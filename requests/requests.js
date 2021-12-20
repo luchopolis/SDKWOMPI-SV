@@ -34,4 +34,23 @@ const generateToken = async (client_id,client_secret) => {
     }
 }
 
-module.exports = { generateToken }
+const genereateEnlacePago = async (enlaceObject, token) => {
+    try {
+        
+        const response = await axios({
+            method: "POST",
+            url: config.ENLACE_PAGO,
+            data:enlaceObject,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        return response.data
+    } catch (error) {
+        if (error) throw new Error(error)
+    }
+}
+
+module.exports = { generateToken, genereateEnlacePago }
