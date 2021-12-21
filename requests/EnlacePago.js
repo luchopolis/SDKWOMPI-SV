@@ -21,11 +21,11 @@ class EnlacePago {
     }
 
     /**
-     * value is String example, Tres,Dos
+     * value is String example, Tres,Seis,Nueve,Doce config this with the checkAplicativo method in request
      */
     enablePagoCuotas(value){
         this.formaPago.permitirPagoEnCuotasAgricola = true
-        this.cantidadMaximaCuotas = value
+        this.cantidadMaximaCuotas = value || "Tres"
     }
 
     /*

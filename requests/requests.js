@@ -1,6 +1,7 @@
 const axios = require('axios')
 const config = require('../util/config')
 
+/*  |   GET TOKEN  | */
 const generateToken = async (client_id,client_secret) => {
     if(!client_id){
         console.error('Param required: client_id')
@@ -34,12 +35,13 @@ const generateToken = async (client_id,client_secret) => {
     }
 }
 
-const genereateEnlacePago = async (enlaceObject, token) => {
+/* ENLACE PAGO */
+const generateEnlacePago = async (enlaceObject, token) => {
     try {
         
         const response = await axios({
             method: "POST",
-            url: config.ENLACE_PAGO,
+            url: config.API_URL+config.ENLACE_PAGO,
             data:enlaceObject,
             headers: {
                 'Content-Type': 'application/json',
@@ -53,4 +55,58 @@ const genereateEnlacePago = async (enlaceObject, token) => {
     }
 }
 
-module.exports = { generateToken, genereateEnlacePago }
+const checkEnlacePago = async (id, token) => {
+    try {
+        const response = await axios({
+            method: "GET",
+            url: `${config.API_URL}${config.ENLACE_PAGO}${id}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        return response.data
+    } catch (error) {
+        if (error) throw new Error(error)
+    }
+}
+
+const disableEnlacePago = async (id, token) => {
+    try {
+        console.log(token);
+        const response = await axios({
+            method: "PUT",
+            url: `${config.API_URL}${config.ENLACE_PAGO}${id}/${config.ENLACE_PAGO_DIS}`,
+            headers: {
+                'Content-Type': 'text/html',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        return response.data
+    } catch (error) {
+        if (error) throw new Error(error)
+    }
+}
+
+
+
+/* APLICATIVO */
+const checkAplicativo = async (token) => {
+    try {
+        const response = await axios({
+            method: "GET",
+            url: config.API_URL+config.APLICATIVO,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response.data
+    } catch (error) {
+        if(error) throw new Error(error)
+    }
+}
+
+module.exports = { generateToken, generateEnlacePago, checkAplicativo, checkEnlacePago, disableEnlacePago }

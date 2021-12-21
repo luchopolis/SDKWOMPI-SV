@@ -1,7 +1,7 @@
 
 //module.exports = require('./requests/requests')
 
-const { generateToken, genereateEnlacePago } = require('./requests/requests')
+const { generateToken, generateEnlacePago, checkAplicativo, checkEnlacePago, disableEnlacePago } = require('./requests/requests')
 const EnlacePagoObject = require('./requests/EnlacePago')
 
 const APIID = "891ca1c5-2b11-4b44-ad67-720b3ddc8b76"
@@ -15,9 +15,15 @@ const testToken = async () => {
     EnlacePagoObject.asignUrlRedirect('https://pichingadev.com')
     EnlacePagoObject.configuracion.emailsNotificacion = "lacgdev@gmail.com"
 
-    const pagaLink = await genereateEnlacePago(EnlacePagoObject.getObject(), token)
-    console.log(pagaLink)
-   
+    //const pagaLink = await generateEnlacePago(EnlacePagoObject.getObject(), token)
+    //console.log(pagaLink)
+    // DISABLE ENLACE PAGO
+    console.log(await disableEnlacePago(268621,token))
+
+    // Check Aplicativo
+    //console.log(await checkAplicativo(token))
+    //console.log(await checkEnlacePago(268621, token))
+
 }
 
 testToken()
